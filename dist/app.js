@@ -21,8 +21,8 @@ const photos = [
   ['07_em_movimento', 'Em movimento', 'em movimento']
 ];
 const models = {
-  S9: { type: 'SEDÃ CONCEITUAL', description: 'Linhas fluidas, presença marcante e uma experiência pensada para transformar cada chegada.', trait: 'Elegância' },
-  X7: { type: 'SUV CONCEITUAL', description: 'Uma presença imponente para explorar novos caminhos, com espaço para tudo o que move você.', trait: 'Versatilidade' }
+  S9: { type: 'SEDÃ CONCEITUAL', description: 'Linhas fluidas, presença marcante e uma experiência pensada para transformar cada chegada.', trait: 'Elegância', specs: { Range: '620 <small>km</small>', Power: '320 <small>cv</small>', Acceleration: '5,6 <small>s</small>', Battery: '84 <small>kWh</small>', Drive: 'Integral <small>AWD</small>', Charging: '28 <small>min</small>', Length: '4.920 <small>mm</small>', Seats: '5 <small>pessoas</small>' } },
+  X7: { type: 'SUV CONCEITUAL', description: 'Uma presença imponente para explorar novos caminhos, com espaço para tudo o que move você.', trait: 'Versatilidade', specs: { Range: '510 <small>km</small>', Power: '380 <small>cv</small>', Acceleration: '5,8 <small>s</small>', Battery: '98 <small>kWh</small>', Drive: 'Integral <small>AWD</small>', Charging: '30 <small>min</small>', Length: '4.990 <small>mm</small>', Seats: '7 <small>pessoas</small>' } }
 };
 let currentModel = 'S9';
 let currentPhoto = 0;
@@ -53,5 +53,9 @@ document.querySelectorAll('.model-tab').forEach(tab => tab.addEventListener('cli
   document.querySelector('#modelType').textContent = model.type;
   document.querySelector('#modelDescription').textContent = model.description;
   document.querySelector('#modelTrait').textContent = model.trait;
+  document.querySelector('#specModel').textContent = `VELORA ${currentModel}`;
+  Object.entries(model.specs).forEach(([key, value]) => {
+    document.querySelector(`#spec${key}`).innerHTML = value;
+  });
   showPhoto();
 }));
